@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sensor Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-dark text-white py-4">
+
+  <div class="container text-center">
+    <h1 class="mb-4">Battery Monitoring Dashboard</h1>
+
+    <div class="row justify-content-center">
+      <!-- First Row - Gauges -->
+      <div class="col-md-4 mb-4">
+        <h4>Voltage</h4>
+        <div class="gauge-wrapper">
+          <div class="gauge">
+            <div class="needle" id="needle-voltage"></div>
+            <div class="gauge-center"></div>
+            <div class="gauge-value" id="value-voltage">0 V</div>
+            <div class="ticks" data-type="voltage"></div>
+            <div class="gauge-labels" data-type="voltage"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <h4>Current</h4>
+        <div class="gauge-wrapper">
+          <div class="gauge">
+            <div class="needle" id="needle-current"></div>
+            <div class="gauge-center"></div>
+            <div class="gauge-value" id="value-current">0 A</div>
+            <div class="ticks" data-type="current"></div>
+            <div class="gauge-labels" data-type="current"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <h4>Power</h4>
+        <div class="gauge-wrapper">
+          <div class="gauge">
+            <div class="needle" id="needle-power"></div>
+            <div class="gauge-center"></div>
+            <div class="gauge-value" id="value-power">0 W</div>
+            <div class="ticks" data-type="power"></div>
+            <div class="gauge-labels" data-type="power"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row - Status Parameters -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card bg-dark border-secondary mb-4">
+          <div class="card-header bg-secondary text-white">
+            <h4 class="mb-0">Battery Status</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">SOC</div>
+                <div class="parameter-value" id="value-soc">0%</div>
+              </div>
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">Range</div>
+                <div class="parameter-value" id="value-range">0.0 km</div>
+              </div>
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">Status</div>
+                <div class="parameter-value" id="value-status">Not Charging</div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">SOH</div>
+                <div class="parameter-value" id="value-soh">Poor</div>
+              </div>
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">Low Full Charge</div>
+                <div class="parameter-value" id="value-fullcharge">Not Full</div>
+              </div>
+              <div class="col-md-4 parameter">
+                <div class="parameter-name">Temp</div>
+                <div class="parameter-value" id="value-temp">NAN°C - Normal</div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6 parameter">
+                <div class="parameter-name">Humidity</div>
+                <div class="parameter-value" id="value-humidity">NAN%</div>
+              </div>
+              <div class="col-md-6 parameter">
+                <div class="parameter-name">Alert</div>
+                <div class="parameter-value alert-value" id="value-alert">A LOW BATTERY!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="updateForm" class="row justify-content-center g-2 mt-2">
+      <div class="col-md-2">
+        <input type="number" step="0.1" name="voltage" class="form-control" placeholder="Voltage (-10 to +10)">
+      </div>
+      <div class="col-md-2">
+        <input type="number" step="0.1" name="current" class="form-control" placeholder="Current (-100 to +100)">
+      </div>
+      <div class="col-md-2">
+        <input type="number" step="0.1" name="power" class="form-control" placeholder="Power (-200 to +200)">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Update</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
